@@ -1,0 +1,33 @@
+This stored procedure allows you to create backups all using one command. You do not
+need to worry about different commands for full, differential, or transaction log
+backups. You can modify this procedure, but it is a good example to show you how
+scripting common tasks can simplify your database management.
+
+This stored procedure has three parameters:
+@db_name - this is the name of the database to back up; encased in single quotes
+@backup_dir - this is the directory where the database will be made; encased in single quotes
+@backup_type - this is the type of backup that will be generated. Valid values:			
+	1 = full backup
+	2 = differential backup
+	3 = transaction log backup
+
+A full backup will get an extension of .bak, a differential backup will have an
+extension of .dif, and a transacion log backup will have a file extension of .trn.
+
+In the directory you specify, your backup will be created with the following naming 
+convention:
+INSTANCENAME_DATABASENAME_BACKUPTYPE_BACKUPSTARTTIME.EXTENSION
+
+For example:
+LS-MIRROR-1_ConsolidateTo2005_TLOG_080428132704.trn
+
+is a transaction log backup file from the database ConsolitdateTo2005
+from instance LS-MIRROR-1. The backup file was started on April 28, 2008
+at 1:27:04 PM.
+
+
+Below is an example that will back up a transaction log:
+exec dba_backup
+	@db_name = 'ConsolidateTo2005',
+	@backup_dir = 'C:\SQL Backups\ConsolidateTo2005'
+	@backup_type = 3

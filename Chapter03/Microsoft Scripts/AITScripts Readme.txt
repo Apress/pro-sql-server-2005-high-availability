@@ -1,0 +1,1 @@
+The AITScripts.zip file contains the five backup stored procedures referenced in Chapter 3 that are used by Microsoft's internal IT organization. However, there is much more than those five procedures contained in the zip. It contains many of the other things Microsoft does as well, so feel free to explore the other resources contained in the ZIP file.

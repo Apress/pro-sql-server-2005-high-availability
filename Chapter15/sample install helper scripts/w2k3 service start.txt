@@ -1,0 +1,4 @@
+This batch file is an example of how to automatically start services.
+
+You can also use WMI and wrap logic around it to check for antecedents but
+using net start is the easiest way to do things.
